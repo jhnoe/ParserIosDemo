@@ -1,0 +1,20 @@
+*.DS_Store
+*.xcuserdatad
+xcschemes
+/docs
+MqqDerivedData/
+/DerivedData
+#AppCode IDE相关
+.idea/
+/build
+/dev-tools/deal_header/required_frameworks.txt
+.gradle/
+./LiveSDK/include
+
+Carthage/Build
+
+# Pod & Pod Generate Files
+Podfile.lock
+Pods
+
+#LiveSDK.xcworkspace/contents.xcworkspacedata
