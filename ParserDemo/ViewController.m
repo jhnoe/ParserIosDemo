@@ -28,14 +28,30 @@
     }];
     
     [self initParser];
+    
+    [self saveObject];
 }
 
 - (void)initParser {
     [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-            configuration.applicationId = @"parseAppId";
-            configuration.clientKey = @"parseClientKey";
-            configuration.server = @"parseServerUrlString";
+            configuration.applicationId = @"app1";
+            configuration.clientKey = @"app1";
+            configuration.server = @"http://42.193.41.185:1337/parse/";
         }]];
+}
+
+- (void)saveObject {
+    PFObject *iosObj = [PFObject objectWithClassName:@"ios"];
+    iosObj[@"author"] = [@"jhonexu" dataUsingEncoding:NSUTF8StringEncoding];
+    iosObj[@"platform"] = [@"ios" dataUsingEncoding:NSUTF8StringEncoding];
+    iosObj[@"devices"] = [@"iphone 5" dataUsingEncoding:NSUTF8StringEncoding];
+    [iosObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"jhonexu: saveObject ok");
+        } else {
+            NSLog(@"jhonexu: saveObject error : %@",error);
+        }
+    }];
 }
 
 
